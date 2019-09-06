@@ -8,32 +8,58 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
     tools:context=".MainActivity">
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/ft"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:singleLine="true"
             android:hint="Feet!"
-            />
-+        <EditText
-            android:id="@+id/in"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:maxLength="10"
             android:singleLine="true"
+            app:layout_constraintBottom_toTopOf="@+id/milesButton"
+            app:layout_constraintEnd_toStartOf="@+id/in"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <EditText
+            android:id="@+id/in"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="112dp"
             android:hint="Inches!"
-            />
+            android:maxLength="10"
+            android:singleLine="true"
+            app:layout_constraintBottom_
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/ft"
+            app:layout_constraintStart_toEndOf="@+id/ft" />
 
-    </LinearLayout>
-    </ScrollView>
+        <Button
+        android:id="@+id/milesButton"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Miles"
+        app:layout_constraintTop_toBottomOf="@+id/ft"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraint
+        ></Button>
+    <Button
+        android:id="@+id/metersButton"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Meters"
+        app:layout_constraintTop_toBottomOf="@+id/milesButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"></Button>
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
