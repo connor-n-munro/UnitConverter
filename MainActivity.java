@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,44 +26,68 @@ public class MainActivity extends AppCompatActivity {
 
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder.setTitle("Conversion done!");
         EditText feet = (EditText) findViewById(R.id.ft);
         EditText inches = (EditText) findViewById(R.id.in);
         String ftString = feet.getText().toString();
         String inString = inches.getText().toString();
-        int ft;
-        int in;
-        try
-        {
-        for (int i = 0; i < ftString.length() - 1; i++) {
-            if (ftString.charAt(i) < 48 || ftString.charAt(i) > 57) {
-                throw new IllegalArgumentException("Please use only numbers!");
-            }
-        }
-        for (int j = 0; j < inString.length(); j++) {
-            if (inString.charAt(j) < 48 || inString.charAt(j) > 57) {
-                throw new IllegalArgumentException("Please use only numbers!");
-            }
-        }
-         }
-        catch (IllegalArgumentException e)
-        {
-            alertDialogBuilder.setTitle("Error!");
-            alertDialogBuilder.setMessage(e.getMessage());
-            AlertDialog alert = alertDialogBuilder.create();
-            alert.show();
-        }
-        ft = Integer.parseInt(ftString);
-        in = Integer.parseInt(inString);
+        int ft = Integer.parseInt(ftString);
+        int in = Integer.parseInt(inString);
         final int total = in + (ft * 12);
         final Button milesButton = findViewById(R.id.milesButton);
+        final Button metersButton = findViewById(R.id.metersButton);
+        final Button kilButton = findViewById(R.id.kilometersButton);
+        final Button empireButton = findViewById(R.id.empireButton);
+        final ImageView ruffalo = findViewById(R.id.ruffaloButton);
         milesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                float totalMiles = total/63360;
-                alertDialogBuilder.setTitle("Conversion done!");
-                alertDialogBuilder.setMessage()
+                double totalMiles = total/63360;
+                alertDialogBuilder.setMessage(totalMiles + "!");
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
             }
-        })
+        });
+        metersButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                double divisor = 39.3701;
+                double totalMeters = total/divisor;
+                alertDialogBuilder.setMessage(totalMeters + "!");
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+            }
+        });
+        kilButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                double divisor = 39370.1;
+                double totalKilometers = total/divisor;
+                alertDialogBuilder.setMessage(totalKilometers + "!");
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+            }
+        });
+        empireButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                int divisor = 17448;
+                double totalEmpires = total/divisor;
+                alertDialogBuilder.setMessage(totalEmpires + "!");
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+            }
+        });
+        ruffalo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                int divisor = 68;
+                double totalRuffalos = total/divisor;
+                alertDialogBuilder.setMessage(totalRuffalos + "!");
+                AlertDialog alert = alertDialogBuilder.create();
+                alert.show();
+            }
+        });
 
     }
 
@@ -87,7 +112,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public
 }
