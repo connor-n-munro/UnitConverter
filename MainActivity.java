@@ -1,10 +1,6 @@
 package com.example.unitconverter;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,17 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //personal code
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setCancelable(true);
         alertDialogBuilder.setTitle("Conversion done!");
-        EditText feet = (EditText) findViewById(R.id.ft);
-        EditText inches = (EditText) findViewById(R.id.in);
-        String ftString = feet.getText().toString();
-        String inString = inches.getText().toString();
-        int ft = Integer.parseInt(ftString);
-        int in = Integer.parseInt(inString);
-        final int total = in + (ft * 12);
         final Button milesButton = findViewById(R.id.milesButton);
         final Button metersButton = findViewById(R.id.metersButton);
         final Button kilButton = findViewById(R.id.kilometersButton);
@@ -42,8 +31,24 @@ public class MainActivity extends AppCompatActivity {
         milesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                double totalMiles = total/63360;
-                alertDialogBuilder.setMessage(totalMiles + "!");
+                double divisor = 63360.0;
+                EditText feet = findViewById(R.id.ft);
+                EditText inches = findViewById(R.id.in);
+                String ftString = feet.getText().toString();
+                String inString = inches.getText().toString();
+                int ft = 0;
+                int in = 0;
+                if(!ftString.isEmpty())
+                {
+                    ft = Integer.parseInt(ftString);
+                }
+                if(!inString.isEmpty())
+                {
+                    in = Integer.parseInt(inString);
+                }
+                double total = in + (ft * 12);
+                double totalMiles = total/divisor;
+                alertDialogBuilder.setMessage(ft + "'" + in + "\" is " + totalMiles + " miles!");
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
             }
@@ -52,8 +57,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 double divisor = 39.3701;
+                EditText feet = findViewById(R.id.ft);
+                EditText inches = findViewById(R.id.in);
+                String ftString = feet.getText().toString();
+                String inString = inches.getText().toString();
+                int ft = 0;
+                int in = 0;
+                if(!ftString.isEmpty())
+                {
+                    ft = Integer.parseInt(ftString);
+                }
+                if(!inString.isEmpty())
+                {
+                    in = Integer.parseInt(inString);
+                }
+                int total = in + (ft * 12);
                 double totalMeters = total/divisor;
-                alertDialogBuilder.setMessage(totalMeters + "!");
+                alertDialogBuilder.setMessage(ft + "'" + in + "\" is " + totalMeters + " meters!");
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
             }
@@ -62,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 double divisor = 39370.1;
+                EditText feet = findViewById(R.id.ft);
+                EditText inches = findViewById(R.id.in);
+                String ftString = feet.getText().toString();
+                String inString = inches.getText().toString();
+                int ft = Integer.parseInt(ftString);
+                int in = Integer.parseInt(inString);
+                int total = in + (ft * 12);
                 double totalKilometers = total/divisor;
-                alertDialogBuilder.setMessage(totalKilometers + "!");
+                alertDialogBuilder.setMessage(ft + "'" + in + "\" is " + totalKilometers + " kilometers!");
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
             }
@@ -72,8 +99,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 int divisor = 17448;
+                EditText feet = findViewById(R.id.ft);
+                EditText inches = findViewById(R.id.in);
+                String ftString = feet.getText().toString();
+                String inString = inches.getText().toString();
+                int ft = 0;
+                int in = 0;
+                if(!ftString.isEmpty())
+                {
+                    ft = Integer.parseInt(ftString);
+                }
+                if(!inString.isEmpty())
+                {
+                    in = Integer.parseInt(inString);
+                }
+                int total = in + (ft * 12);
                 double totalEmpires = total/divisor;
-                alertDialogBuilder.setMessage(totalEmpires + "!");
+                alertDialogBuilder.setMessage(ft + "'" + in + "\" is " + totalEmpires + " Empire State Buildings!");
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
             }
@@ -81,9 +123,24 @@ public class MainActivity extends AppCompatActivity {
         ruffalo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
-                int divisor = 68;
+                double divisor = 68.0;
+                EditText feet = findViewById(R.id.ft);
+                EditText inches = findViewById(R.id.in);
+                String ftString = feet.getText().toString();
+                String inString = inches.getText().toString();
+                int ft = 0;
+                int in = 0;
+                if(!ftString.isEmpty())
+                {
+                    ft = Integer.parseInt(ftString);
+                }
+                if(!inString.isEmpty())
+                {
+                    in = Integer.parseInt(inString);
+                }
+                double total = in + (ft * 12);
                 double totalRuffalos = total/divisor;
-                alertDialogBuilder.setMessage(totalRuffalos + "!");
+                alertDialogBuilder.setMessage(ft + "'" + in + "\" is " + totalRuffalos + " Mark Ruffalo's!");
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
             }
